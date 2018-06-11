@@ -1,0 +1,140 @@
+<html><head>
+  <script type="text/javascript" src="http://code.jquery.com/jquery-1.10.1.js"></script>
+    
+      <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+     
+      <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/moment.js/2.6.0/moment.js"></script>
+    
+      <link rel="stylesheet" type="text/css" href="assets/css/fullcalender.css">
+    
+      <script type="text/javascript" src="assets/js/fullcalender.js"></script>  
+  
+
+  <style type="text/css">
+    body {
+    margin-top: 40px;
+    text-align: center;
+    font-size: 13px;
+    font-family:"Lucida Grande", Helvetica, Arial, Verdana, sans-serif;
+}
+#calendar {
+    width: 900px;
+    margin: 0 auto;
+}
+.backgroundActive{
+	display:inline-block;
+	border:1px solid 0000ff;
+	background-color:blue;
+	border-radius:50%;
+	width:20px;
+	height:auto;
+	color:ffffff;
+}
+  </style>
+
+  <title>FullCalendar 2 JSON Feed Debugging Template</title>
+
+<body>
+  <div id="calendar" ></div>
+
+<script>
+
+$(function(){
+
+
+
+$('#calendar').fullCalendar({
+    header: {
+        left: 'prev,next today',
+        center: 'title',
+        right: 'month,agendaWeek,agendaDay'
+    },
+   firstDay:1,
+   lastDay:4,
+    editable: true,
+    slotDuration: '00:15:00',
+    weekends: true,
+    defaultView: 'agendaWeek',
+    draggable: true,
+    // defaultDate: '2017-12-21',
+    events: [
+      {
+        title: 'All Day A',
+        start: '2017-12-19',
+        end: '2017-12-19',
+        allDay: false,
+        id: 'busy',
+        rendering: 'background'
+      },
+      {
+        title: '2 Hour A',
+        start: '2017-12-19T08:00:00',
+        end: '2017-12-19T10:00:00',
+        color: 'red',
+        id: 'busy',
+        rendering: 'background'
+      },
+      {
+        title: 'All Day B',
+        start: '2018-05-10T05:30:00',
+        end: '2018-05-10T06:30:00',
+        color: 'blue',
+        allDay: false,
+        id: 'busy',
+        rendering: 'background'
+      },
+      {
+        title: '2 Hour B',
+        start: '2018-05-09T08:30:00',
+        end: '2018-05-09T10:30:00',
+        color: 'orange',
+        id: 'busy',
+        rendering: 'background'
+      },
+      {
+        title: '2 Hour C',
+        start: '2018-05-09T09:00:00',
+        end: '2018-05-09T11:00:00',
+        color: 'purple',
+        id: 'busy'
+      }
+    ]
+
+    // IF YOU WANT TO MODIFY YOUR GIST AFTERWARDS...
+    //
+    // You might not see your changes reflected right away because
+    // jsFiddle caches the JSON feed data. You can either wait a
+    // few minutes or create a brand new Gist.
+    //
+    // Don't forget, the Networking panel in Firebug/Inspector is
+    // your friend.
+
+});
+var date = $("#calendar").fullCalendar('getDate');
+var months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+console.log(months[date.month()]);
+$("#calendar >.fc-header tr").prepend("<td class = setMonth>"+months[date.month()]+"</td>");
+$("#calendar >.fc-header tr").append("<td class = cerbo><span class = 'colorBox1 colorBox'></span><span>As a Cerbo</span></td><td class = learner><span class ='colorBox colorBox1'></span><span>As a Learner</span></td>");
+$("body").find(".fc-header-center").remove();
+var holdCurrentDay = $("body").find(".fc-today").attr("class").split(" ")[1];
+$("body").find("."+holdCurrentDay).find("span").addClass("backgroundActive");
+$("body").find(".fc-header-right , .fc-button-today , .fc-agenda-allday").remove();
+});
+
+
+
+
+</script>
+
+  
+</head>
+
+
+  
+
+
+
+
+
+
+</body></html>
